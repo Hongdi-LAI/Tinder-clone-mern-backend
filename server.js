@@ -14,7 +14,7 @@ app.use(cors());
 /* Db Config */
 
 const Db_URL =
-  "mongodb+srv://admin:Sj5y1Buixe6uz8eH@tinder-mern-database.auohm.mongodb.net/tinder-db?retryWrites=true&w=majority";
+  "mongodb+srv://admin:mfP7rk8N0P1uBZ4G@cluster0.auohm.mongodb.net/tinderdb?retryWrites=true&w=majority";
 
 const connection = mongoose.createConnection(Db_URL, {
   useCreateIndex: true,
@@ -35,7 +35,7 @@ mongoose.connect(Db_URL, {
 /* API Endpoints */
 app.get("/", (req, res) => res.status(200).send("Hello! This API Is Working!"));
 
-app.post("/tinder/card", (req, res) => {
+app.post("/tinder/postcards", (req, res) => {
   const dbCard = req.body;
   Cards.create(dbCard, (err, data) => {
     if (err) {
@@ -46,7 +46,7 @@ app.post("/tinder/card", (req, res) => {
   });
 });
 
-app.get("/tinder/cards", (req, res) => {
+app.get("/tinder/getcards", (req, res) => {
   Cards.find((err, data) => {
     if (err) {
       res.status(500).send(err);
